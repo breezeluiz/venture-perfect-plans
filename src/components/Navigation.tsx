@@ -1,49 +1,79 @@
 import { useState } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "@/components/ui/button";
-import { Heart, Menu, X } from "lucide-react";
+import { Heart, Menu, X, User } from "lucide-react";
 
 export function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { user, signOut } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-venture-cream">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center space-x-2">
+          <Link to="/" className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-gradient-sunset rounded-full flex items-center justify-center">
               <Heart className="h-5 w-5 text-white" />
             </div>
             <span className="text-2xl font-bold text-venture-coral">Venture</span>
-          </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#home" className="text-foreground hover:text-venture-coral transition-colors">
+            <Link to="/" className={`transition-colors ${location.pathname === '/' ? 'text-venture-coral' : 'text-foreground hover:text-venture-coral'}`}>
               Home
-            </a>
-            <a href="#plan" className="text-foreground hover:text-venture-coral transition-colors">
-              Plan Builder
-            </a>
-            <a href="#packs" className="text-foreground hover:text-venture-coral transition-colors">
+            </Link>
+            {user && (
+              <Link to="/dashboard" className={`transition-colors ${location.pathname === '/dashboard' ? 'text-venture-coral' : 'text-foreground hover:text-venture-coral'}`}>
+                Dashboard
+              </Link>
+            )}
+            <Link to="/venture-packs" className={`transition-colors ${location.pathname === '/venture-packs' ? 'text-venture-coral' : 'text-foreground hover:text-venture-coral'}`}>
               Venture Packs
-            </a>
-            <a href="#inspiration" className="text-foreground hover:text-venture-coral transition-colors">
-              Inspiration
-            </a>
-            <a href="#about" className="text-foreground hover:text-venture-coral transition-colors">
-              About
-            </a>
+            </Link>
+            {user && (
+              <Link to="/bookings" className={`transition-colors ${location.pathname === '/bookings' ? 'text-venture-coral' : 'text-foreground hover:text-venture-coral'}`}>
+                My Bookings
+              </Link>
+            )}
           </div>
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center space-x-4">
-            <Button variant="ghost" className="text-venture-coral hover:bg-venture-cream">
-              Sign In
-            </Button>
-            <Button className="bg-venture-coral hover:bg-venture-coral/90">
-              Start Planning
-            </Button>
+            {user ? (
+              <div className="flex items-center space-x-4">
+                <Link to="/profile">
+                  <Button variant="ghost" className="text-venture-coral hover:bg-venture-cream">
+                    <User className="h-4 w-4 mr-2" />
+                    Profile
+                  </Button>
+                </Link>
+                <Button 
+                  variant="ghost" 
+                  onClick={() => signOut()}
+                  className="text-venture-coral hover:bg-venture-cream"
+                >
+                  Sign Out
+                </Button>
+              </div>
+            ) : (
+              <>
+                <Link to="/auth">
+                  <Button variant="ghost" className="text-venture-coral hover:bg-venture-cream">
+                    Sign In
+                  </Button>
+                </Link>
+                <Link to="/auth">
+                  <Button className="bg-venture-coral hover:bg-venture-coral/90">
+                    Start Planning
+                  </Button>
+                </Link>
+              </>
+            )}
           </div>
 
           {/* Mobile menu button */}
@@ -59,48 +89,73 @@ export function Navigation() {
         {isMenuOpen && (
           <div className="md:hidden bg-white border-t border-venture-cream py-4">
             <div className="flex flex-col space-y-4">
-              <a 
-                href="#home" 
-                className="text-foreground hover:text-venture-coral transition-colors px-4 py-2"
+              <Link 
+                to="/" 
+                className={`transition-colors px-4 py-2 ${location.pathname === '/' ? 'text-venture-coral' : 'text-foreground hover:text-venture-coral'}`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 Home
-              </a>
-              <a 
-                href="#plan" 
-                className="text-foreground hover:text-venture-coral transition-colors px-4 py-2"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Plan Builder
-              </a>
-              <a 
-                href="#packs" 
-                className="text-foreground hover:text-venture-coral transition-colors px-4 py-2"
+              </Link>
+              {user && (
+                <Link 
+                  to="/dashboard" 
+                  className={`transition-colors px-4 py-2 ${location.pathname === '/dashboard' ? 'text-venture-coral' : 'text-foreground hover:text-venture-coral'}`}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Dashboard
+                </Link>
+              )}
+              <Link 
+                to="/venture-packs" 
+                className={`transition-colors px-4 py-2 ${location.pathname === '/venture-packs' ? 'text-venture-coral' : 'text-foreground hover:text-venture-coral'}`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 Venture Packs
-              </a>
-              <a 
-                href="#inspiration" 
-                className="text-foreground hover:text-venture-coral transition-colors px-4 py-2"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Inspiration
-              </a>
-              <a 
-                href="#about" 
-                className="text-foreground hover:text-venture-coral transition-colors px-4 py-2"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                About
-              </a>
+              </Link>
+              {user && (
+                <Link 
+                  to="/bookings" 
+                  className={`transition-colors px-4 py-2 ${location.pathname === '/bookings' ? 'text-venture-coral' : 'text-foreground hover:text-venture-coral'}`}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  My Bookings
+                </Link>
+              )}
+              {user && (
+                <Link 
+                  to="/profile" 
+                  className={`transition-colors px-4 py-2 ${location.pathname === '/profile' ? 'text-venture-coral' : 'text-foreground hover:text-venture-coral'}`}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Profile
+                </Link>
+              )}
               <div className="px-4 pt-4 border-t border-venture-cream space-y-2">
-                <Button variant="ghost" className="w-full text-venture-coral hover:bg-venture-cream">
-                  Sign In
-                </Button>
-                <Button className="w-full bg-venture-coral hover:bg-venture-coral/90">
-                  Start Planning
-                </Button>
+                {user ? (
+                  <Button 
+                    variant="ghost" 
+                    className="w-full text-venture-coral hover:bg-venture-cream"
+                    onClick={() => {
+                      signOut();
+                      setIsMenuOpen(false);
+                    }}
+                  >
+                    Sign Out
+                  </Button>
+                ) : (
+                  <>
+                    <Link to="/auth" onClick={() => setIsMenuOpen(false)}>
+                      <Button variant="ghost" className="w-full text-venture-coral hover:bg-venture-cream">
+                        Sign In
+                      </Button>
+                    </Link>
+                    <Link to="/auth" onClick={() => setIsMenuOpen(false)}>
+                      <Button className="w-full bg-venture-coral hover:bg-venture-coral/90">
+                        Start Planning
+                      </Button>
+                    </Link>
+                  </>
+                )}
               </div>
             </div>
           </div>

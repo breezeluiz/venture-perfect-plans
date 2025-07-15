@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "@/contexts/AuthContext";
 import { Navigation } from "@/components/Navigation";
 import { Hero } from "@/components/Hero";
 import { PlanBuilder } from "@/components/PlanBuilder";
@@ -12,6 +14,8 @@ import { ArrowRight, Heart, Star, MapPin, Users, Sparkles } from "lucide-react";
 const Index = () => {
   const [showPlanBuilder, setShowPlanBuilder] = useState(false);
   const [generatedVenture, setGeneratedVenture] = useState(null);
+  const { user } = useAuth();
+  const navigate = useNavigate();
 
   const handlePlanComplete = (planData: any) => {
     // Simulate generating a venture based on plan data
@@ -98,7 +102,7 @@ const Index = () => {
               </p>
               <Button 
                 size="lg" 
-                onClick={() => setShowPlanBuilder(true)}
+                onClick={() => user ? setShowPlanBuilder(true) : navigate('/auth')}
                 className="bg-venture-coral hover:bg-venture-coral/90 px-8 py-6 text-lg shadow-medium"
               >
                 Start Planning Your Venture <ArrowRight className="ml-2 h-5 w-5" />
@@ -252,17 +256,19 @@ const Index = () => {
               <Button 
                 size="lg" 
                 className="bg-white text-venture-coral hover:bg-venture-cream px-8 py-6 text-lg font-semibold"
-                onClick={() => setShowPlanBuilder(true)}
+                onClick={() => user ? setShowPlanBuilder(true) : navigate('/auth')}
               >
                 Plan Your First Venture <Sparkles className="ml-2 h-5 w-5" />
               </Button>
-              <Button 
-                variant="outline" 
-                size="lg"
-                className="border-white text-white hover:bg-white hover:text-venture-coral px-8 py-6 text-lg"
-              >
-                Explore Venture Packs
-              </Button>
+              <Link to="/venture-packs">
+                <Button 
+                  variant="outline" 
+                  size="lg"
+                  className="border-white text-white hover:bg-white hover:text-venture-coral px-8 py-6 text-lg"
+                >
+                  Explore Venture Packs
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

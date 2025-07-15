@@ -69,14 +69,16 @@ export function AuthForm() {
 
   if (resetMode) {
     return (
-      <Card className="w-full max-w-md mx-auto">
+      <Card className="w-full max-w-md mx-auto shadow-elegant backdrop-blur-sm bg-white/95">
         <CardHeader className="text-center">
-          <div className="flex items-center justify-center space-x-2 mb-2">
-            <Heart className="h-6 w-6 text-venture-coral" />
-            <span className="text-2xl font-bold text-venture-coral">Venture</span>
+          <div className="flex items-center justify-center space-x-2 mb-4">
+            <div className="w-12 h-12 bg-gradient-sunset rounded-full flex items-center justify-center">
+              <Heart className="h-6 w-6 text-white" />
+            </div>
+            <span className="text-3xl font-bold text-venture-coral">Venture</span>
           </div>
-          <CardTitle>Reset Password</CardTitle>
-          <CardDescription>Enter your email to receive reset instructions</CardDescription>
+          <CardTitle className="text-2xl">Reset Password</CardTitle>
+          <CardDescription className="text-base">Enter your email to receive reset instructions</CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleResetPassword} className="space-y-4">
@@ -115,14 +117,16 @@ export function AuthForm() {
   }
 
   return (
-    <Card className="w-full max-w-md mx-auto">
+    <Card className="w-full max-w-md mx-auto shadow-elegant backdrop-blur-sm bg-white/95">
       <CardHeader className="text-center">
-        <div className="flex items-center justify-center space-x-2 mb-2">
-          <Heart className="h-6 w-6 text-venture-coral" />
-          <span className="text-2xl font-bold text-venture-coral">Venture</span>
+        <div className="flex items-center justify-center space-x-2 mb-4">
+          <div className="w-12 h-12 bg-gradient-sunset rounded-full flex items-center justify-center">
+            <Heart className="h-6 w-6 text-white" />
+          </div>
+          <span className="text-3xl font-bold text-venture-coral">Venture</span>
         </div>
-        <CardTitle>Welcome to Venture</CardTitle>
-        <CardDescription>Sign in to your account or create a new one</CardDescription>
+        <CardTitle className="text-2xl">Welcome to Venture</CardTitle>
+        <CardDescription className="text-base">Sign in to your account or create a new one</CardDescription>
       </CardHeader>
       <CardContent>
         <Tabs defaultValue="signin" className="w-full">

@@ -56,7 +56,7 @@ export default function VenturePacksPage() {
   };
 
   const handleViewDetails = (packId: string) => {
-    navigate(`/venture/${packId}`);
+    navigate(`/venture-packs/${packId}`);
   };
 
   return (
