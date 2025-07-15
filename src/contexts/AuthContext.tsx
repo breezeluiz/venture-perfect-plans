@@ -27,41 +27,32 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Get initial session
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setUser(session?.user ?? null);
-      setLoading(false);
-    });
-
-    // Listen for auth changes
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      async (event, session) => {
-        setUser(session?.user ?? null);
-        setLoading(false);
-      }
-    );
-
-    return () => subscription.unsubscribe();
+    // Mock auth state - set loading to false immediately
+    setLoading(false);
   }, []);
 
   const signIn = async (email: string, password: string) => {
     try {
-      const { error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      });
+      // Mock authentication - simulate successful login
+      const mockUser = {
+        id: 'mock-user-id',
+        email: email,
+        user_metadata: {
+          full_name: 'Mock User',
+        },
+        created_at: new Date().toISOString(),
+      };
       
-      if (error) throw error;
+      setUser(mockUser as any);
       
       toast({
         title: "Welcome back!",
         description: "You've successfully signed in.",
       });
     } catch (error) {
-      const authError = error as AuthError;
       toast({
         title: "Sign in failed",
-        description: authError.message,
+        description: "Please check your credentials and try again.",
         variant: "destructive",
       });
       throw error;
@@ -70,27 +61,26 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   const signUp = async (email: string, password: string, fullName: string) => {
     try {
-      const { error } = await supabase.auth.signUp({
-        email,
-        password,
-        options: {
-          data: {
-            full_name: fullName,
-          },
+      // Mock authentication - simulate successful signup
+      const mockUser = {
+        id: 'mock-user-id',
+        email: email,
+        user_metadata: {
+          full_name: fullName,
         },
-      });
+        created_at: new Date().toISOString(),
+      };
       
-      if (error) throw error;
+      setUser(mockUser as any);
       
       toast({
         title: "Account created!",
-        description: "Please check your email to verify your account.",
+        description: "Welcome to Venture! Your account has been created successfully.",
       });
     } catch (error) {
-      const authError = error as AuthError;
       toast({
         title: "Sign up failed",
-        description: authError.message,
+        description: "Please try again or contact support.",
         variant: "destructive",
       });
       throw error;
@@ -99,18 +89,16 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   const signOut = async () => {
     try {
-      const { error } = await supabase.auth.signOut();
-      if (error) throw error;
+      setUser(null);
       
       toast({
         title: "Signed out",
         description: "You've been successfully signed out.",
       });
     } catch (error) {
-      const authError = error as AuthError;
       toast({
         title: "Sign out failed",
-        description: authError.message,
+        description: "Please try again.",
         variant: "destructive",
       });
       throw error;

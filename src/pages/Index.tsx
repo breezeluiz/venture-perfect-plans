@@ -147,10 +147,12 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Venture Packs Section */}
-      <section id="packs">
-        <VenturePacks />
-      </section>
+      {/* Venture Packs Section - Only show for signed in users */}
+      {user && (
+        <section id="packs">
+          <VenturePacks />
+        </section>
+      )}
 
       {/* How It Works Section */}
       <section className="py-16 bg-white">
