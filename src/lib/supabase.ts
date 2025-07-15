@@ -1,7 +1,8 @@
 import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = 'YOUR_SUPABASE_URL';
-const supabaseAnonKey = 'YOUR_SUPABASE_ANON_KEY';
+// Fallback values for development - replace with your actual Supabase URL and key
+const supabaseUrl = 'https://placeholder-url.supabase.co';
+const supabaseAnonKey = 'placeholder-key';
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
