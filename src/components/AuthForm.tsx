@@ -8,7 +8,11 @@ import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Heart, Loader2 } from "lucide-react";
 
-export function AuthForm() {
+interface AuthFormProps {
+  initialMode?: 'signin' | 'signup';
+}
+
+export function AuthForm({ initialMode = 'signin' }: AuthFormProps) {
   const { signIn, signUp, resetPassword } = useAuth();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
@@ -129,7 +133,7 @@ export function AuthForm() {
         <CardDescription className="text-base">Sign in to your account or create a new one</CardDescription>
       </CardHeader>
       <CardContent>
-        <Tabs defaultValue="signin" className="w-full">
+        <Tabs defaultValue={initialMode} className="w-full">
           <TabsList className="grid w-full grid-cols-2">
             <TabsTrigger value="signin">Sign In</TabsTrigger>
             <TabsTrigger value="signup">Sign Up</TabsTrigger>

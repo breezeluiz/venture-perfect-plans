@@ -62,14 +62,14 @@ export function Navigation() {
               </div>
             ) : (
               <>
-                <Link to="/auth">
-                  <Button variant="ghost" className="text-venture-coral hover:bg-venture-cream">
+                <Link to="/signin">
+                  <Button variant="ghost" className="text-venture-coral hover:bg-venture-cream hover-scale">
                     Sign In
                   </Button>
                 </Link>
-                <Link to="/auth">
-                  <Button className="bg-venture-coral hover:bg-venture-coral/90">
-                    Start Planning
+                <Link to="/signup">
+                  <Button className="bg-venture-coral hover:bg-venture-coral/90 hover-scale">
+                    Create Account
                   </Button>
                 </Link>
               </>
@@ -144,14 +144,14 @@ export function Navigation() {
                   </Button>
                 ) : (
                   <>
-                    <Link to="/auth" onClick={() => setIsMenuOpen(false)}>
+                    <Link to="/signin" onClick={() => setIsMenuOpen(false)}>
                       <Button variant="ghost" className="w-full text-venture-coral hover:bg-venture-cream">
                         Sign In
                       </Button>
                     </Link>
-                    <Link to="/auth" onClick={() => setIsMenuOpen(false)}>
+                    <Link to="/signup" onClick={() => setIsMenuOpen(false)}>
                       <Button className="w-full bg-venture-coral hover:bg-venture-coral/90">
-                        Start Planning
+                        Create Account
                       </Button>
                     </Link>
                   </>

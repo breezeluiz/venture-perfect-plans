@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Heart, MapPin, Sparkles } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export function Hero() {
   return (
@@ -37,20 +38,24 @@ export function Hero() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-            <Button 
-              size="lg" 
-              className="bg-white text-venture-coral hover:bg-venture-cream transition-all duration-300 px-8 py-6 text-lg font-semibold shadow-medium hover:shadow-strong"
-            >
-              Start Planning <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
+            <Link to="/signup">
+              <Button 
+                size="lg" 
+                className="bg-white text-venture-coral hover:bg-venture-cream transition-all duration-300 px-8 py-6 text-lg font-semibold shadow-medium hover:shadow-strong hover-scale"
+              >
+                Start Planning <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </Link>
             
-            <Button 
-              variant="outline" 
-              size="lg"
-              className="border-white text-white hover:bg-white hover:text-venture-coral transition-all duration-300 px-8 py-6 text-lg"
-            >
-              Browse Ventures
-            </Button>
+            <Link to="/venture-packs">
+              <Button 
+                variant="outline" 
+                size="lg"
+                className="border-white text-white hover:bg-white hover:text-venture-coral transition-all duration-300 px-8 py-6 text-lg hover-scale"
+              >
+                Browse Ventures
+              </Button>
+            </Link>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">

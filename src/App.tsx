@@ -6,6 +6,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/contexts/AuthContext";
 import Index from "./pages/Index";
 import AuthPage from "./pages/AuthPage";
+import SignInPage from "./pages/SignInPage";
+import SignUpPage from "./pages/SignUpPage";
 import Dashboard from "./pages/Dashboard";
 import VenturePacksPage from "./pages/VenturePacksPage";
 import VentureDetailsPage from "./pages/VentureDetailsPage";
@@ -24,7 +26,9 @@ const App = () => (
         <AuthProvider>
           <Routes>
             <Route path="/" element={<Index />} />
-            <Route path="/auth" element={<AuthPage />} />
+        <Route path="/auth" element={<AuthPage />} />
+        <Route path="/signin" element={<SignInPage />} />
+        <Route path="/signup" element={<SignUpPage />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/venture-packs" element={<VenturePacksPage />} />
             <Route path="/venture-packs/:id" element={<VentureDetailsPage />} />

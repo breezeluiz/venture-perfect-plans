@@ -102,7 +102,7 @@ const Index = () => {
               </p>
               <Button 
                 size="lg" 
-                onClick={() => user ? setShowPlanBuilder(true) : navigate('/auth')}
+                onClick={() => user ? setShowPlanBuilder(true) : navigate('/signin')}
                 className="bg-venture-coral hover:bg-venture-coral/90 px-8 py-6 text-lg shadow-medium"
               >
                 Start Planning Your Venture <ArrowRight className="ml-2 h-5 w-5" />
@@ -134,11 +134,11 @@ const Index = () => {
                     setGeneratedVenture(null);
                     setShowPlanBuilder(false);
                   }}
-                  className="border-venture-coral text-venture-coral hover:bg-venture-cream mr-4"
+                  className="border-venture-coral text-venture-coral hover:bg-venture-cream mr-4 hover-scale"
                 >
                   Plan Another Venture
                 </Button>
-                <Button className="bg-venture-ocean hover:bg-venture-ocean/90">
+                <Button className="bg-venture-ocean hover:bg-venture-ocean/90 hover-scale">
                   Save This Venture
                 </Button>
               </div>
@@ -258,7 +258,7 @@ const Index = () => {
               <Button 
                 size="lg" 
                 className="bg-white text-venture-coral hover:bg-venture-cream px-8 py-6 text-lg font-semibold"
-                onClick={() => user ? setShowPlanBuilder(true) : navigate('/auth')}
+                onClick={() => user ? setShowPlanBuilder(true) : navigate('/signin')}
               >
                 Plan Your First Venture <Sparkles className="ml-2 h-5 w-5" />
               </Button>
@@ -266,7 +266,7 @@ const Index = () => {
                 <Button 
                   variant="outline" 
                   size="lg"
-                  className="border-white text-white hover:bg-white hover:text-venture-coral px-8 py-6 text-lg"
+                  className="border-white text-white hover:bg-white hover:text-venture-coral px-8 py-6 text-lg hover-scale"
                 >
                   Explore Venture Packs
                 </Button>

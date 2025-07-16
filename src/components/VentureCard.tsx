@@ -2,6 +2,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Clock, MapPin, DollarSign, ExternalLink, Calendar } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "@/contexts/AuthContext";
+import { useToast } from "@/hooks/use-toast";
 
 interface VentureActivity {
   time: string;
@@ -22,6 +25,35 @@ interface VentureCardProps {
 }
 
 export function VentureCard({ title, description, totalCost, vibes, activities, location }: VentureCardProps) {
+  const navigate = useNavigate();
+  const { user } = useAuth();
+  const { toast } = useToast();
+
+  const handleBookNow = () => {
+    if (!user) {
+      toast({
+        title: "Sign in required",
+        description: "Please sign in to book this venture.",
+        variant: "destructive"
+      });
+      navigate('/signin');
+      return;
+    }
+
+    toast({
+      title: "Booking initiated!",
+      description: "Redirecting you to complete your booking...",
+    });
+    navigate('/bookings');
+  };
+
+  const handleViewOnMap = () => {
+    toast({
+      title: "Map view",
+      description: "Opening location in map view...",
+    });
+    // In a real app, this would open a map component
+  };
   return (
     <Card className="shadow-medium hover:shadow-strong transition-all duration-300 bg-gradient-card">
       <CardHeader>
@@ -95,11 +127,18 @@ export function VentureCard({ title, description, totalCost, vibes, activities, 
           </div>
 
           <div className="flex gap-3 pt-4">
-            <Button className="flex-1 bg-venture-coral hover:bg-venture-coral/90">
+            <Button 
+              className="flex-1 bg-venture-coral hover:bg-venture-coral/90 hover-scale"
+              onClick={handleBookNow}
+            >
               <ExternalLink className="h-4 w-4 mr-2" />
               Book This Venture
             </Button>
-            <Button variant="outline" className="border-venture-coral text-venture-coral hover:bg-venture-cream">
+            <Button 
+              variant="outline" 
+              className="border-venture-coral text-venture-coral hover:bg-venture-cream hover-scale"
+              onClick={handleViewOnMap}
+            >
               View on Map
             </Button>
           </div>
