@@ -23,16 +23,16 @@ export function Hero() {
 
       <div className="container mx-auto px-4 text-center text-white relative z-10">
         <div className="animate-fade-in">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight text-white drop-shadow-lg">
             Unforgettable{" "}
-            <span className="bg-gradient-to-r from-venture-gold to-white bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-venture-gold to-yellow-300 bg-clip-text text-transparent drop-shadow-sm">
               Dates
             </span>
             , <br />
             Perfectly Planned
           </h1>
           
-          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto opacity-90 leading-relaxed">
+          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-white/95 leading-relaxed drop-shadow-md">
             Eliminate the stress of planning. Get personalized, curated itineraries 
             that fit your budget, vibe, and occasion. From romantic dinners to weekend getaways.
           </p>
@@ -51,7 +51,7 @@ export function Hero() {
               <Button 
                 variant="outline" 
                 size="lg"
-                className="border-white text-white hover:bg-white hover:text-venture-coral transition-all duration-300 px-8 py-6 text-lg hover-scale"
+                className="border-2 border-white/90 text-white bg-white/10 backdrop-blur-sm hover:bg-white hover:text-venture-coral transition-all duration-300 px-8 py-6 text-lg hover-scale font-semibold"
               >
                 Browse Ventures
               </Button>

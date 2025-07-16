@@ -6,9 +6,12 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { ChatDialog } from "@/components/ChatDialog";
+import { ModifyBookingDialog } from "@/components/ModifyBookingDialog";
+import { useToast } from "@/hooks/use-toast";
 import { 
   Calendar, MapPin, Clock, Users, Star, Download, 
-  Phone, Mail, AlertCircle, CheckCircle, XCircle 
+  Phone, Mail, AlertCircle, CheckCircle, XCircle, MessageCircle
 } from "lucide-react";
 
 interface Booking {
@@ -23,11 +26,14 @@ interface Booking {
   bookingReference: string;
   participants: number;
   duration: string;
+  guideName: string;
+  guideImage?: string;
 }
 
 export default function BookingsPage() {
   const { user } = useAuth();
   const navigate = useNavigate();
+  const { toast } = useToast();
   
   // Sample booking data - in real app, this would come from API
   const [bookings] = useState<Booking[]>([
@@ -42,7 +48,9 @@ export default function BookingsPage() {
       paymentStatus: 'completed',
       bookingReference: 'VEN-2024-001',
       participants: 2,
-      duration: '2 Days'
+      duration: '2 Days',
+      guideName: 'Amina Hassan',
+      guideImage: '/placeholder-avatar.jpg'
     },
     {
       id: '2',
@@ -55,7 +63,9 @@ export default function BookingsPage() {
       paymentStatus: 'completed',
       bookingReference: 'VEN-2024-002',
       participants: 2,
-      duration: '3 Days'
+      duration: '3 Days',
+      guideName: 'David Kiprop',
+      guideImage: '/placeholder-avatar.jpg'
     },
     {
       id: '3',
@@ -68,7 +78,9 @@ export default function BookingsPage() {
       paymentStatus: 'completed',
       bookingReference: 'VEN-2024-003',
       participants: 2,
-      duration: 'Full Day'
+      duration: 'Full Day',
+      guideName: 'Grace Mwangi',
+      guideImage: '/placeholder-avatar.jpg'
     }
   ]);
 
@@ -127,7 +139,29 @@ export default function BookingsPage() {
     }
   };
 
-  const BookingCard = ({ booking }: { booking: Booking }) => (
+  const BookingCard = ({ booking }: { booking: Booking }) => {
+    const handleBookNow = () => {
+      toast({
+        title: "Booking confirmed!",
+        description: "Your adventure is ready. Check your email for details.",
+      });
+    };
+
+    const handleDownloadVoucher = () => {
+      toast({
+        title: "Voucher downloaded",
+        description: "Your booking voucher has been downloaded successfully.",
+      });
+    };
+
+    const handleLeaveReview = () => {
+      toast({
+        title: "Review submitted",
+        description: "Thank you for your feedback! It helps other adventurers.",
+      });
+    };
+
+    return (
     <Card className="mb-6 hover:shadow-medium transition-all duration-300">
       <CardHeader>
         <div className="flex items-start justify-between">
@@ -173,37 +207,53 @@ export default function BookingsPage() {
       <CardContent>
         <div className="flex items-center justify-between">
           <div className="flex gap-2">
-            <Button variant="outline" size="sm">
+            <Button variant="outline" size="sm" onClick={handleDownloadVoucher}>
               <Download className="h-4 w-4 mr-2" />
               Download Voucher
             </Button>
             {booking.status === 'upcoming' && (
-              <Button variant="outline" size="sm">
-                <Phone className="h-4 w-4 mr-2" />
-                Contact Guide
-              </Button>
+              <ChatDialog 
+                guideName={booking.guideName}
+                guideImage={booking.guideImage}
+                bookingId={booking.bookingReference}
+                triggerButton={
+                  <Button variant="outline" size="sm" className="hover-scale">
+                    <MessageCircle className="h-4 w-4 mr-2" />
+                    Chat with Guide
+                  </Button>
+                }
+              />
             )}
             {booking.status === 'completed' && (
-              <Button variant="outline" size="sm">
+              <Button variant="outline" size="sm" onClick={handleLeaveReview}>
                 <Star className="h-4 w-4 mr-2" />
                 Leave Review
               </Button>
             )}
           </div>
           <div className="flex gap-2">
-            <Button size="sm" onClick={() => navigate(`/venture/${booking.id}`)}>
-              View Details
+            <Button size="sm" onClick={handleBookNow}>
+              Book Now
             </Button>
             {booking.status === 'upcoming' && (
-              <Button variant="outline" size="sm">
-                Modify Booking
-              </Button>
+              <ModifyBookingDialog
+                bookingId={booking.bookingReference}
+                currentDate={booking.date}
+                currentParticipants={booking.participants}
+                ventureTitle={booking.ventureTitle}
+                triggerButton={
+                  <Button variant="outline" size="sm" className="hover-scale">
+                    Modify Booking
+                  </Button>
+                }
+              />
             )}
           </div>
         </div>
       </CardContent>
     </Card>
   );
+  };
 
   if (!user) {
     return (
