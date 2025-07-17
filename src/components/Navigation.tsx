@@ -24,9 +24,11 @@ export function Navigation() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link to="/" className={`transition-colors ${location.pathname === '/' ? 'text-venture-coral' : 'text-foreground hover:text-venture-coral'}`}>
-              Home
-            </Link>
+            {!user && (
+              <Link to="/" className={`transition-colors ${location.pathname === '/' ? 'text-venture-coral' : 'text-foreground hover:text-venture-coral'}`}>
+                Home
+              </Link>
+            )}
             {user && (
               <Link to="/dashboard" className={`transition-colors ${location.pathname === '/dashboard' ? 'text-venture-coral' : 'text-foreground hover:text-venture-coral'}`}>
                 Dashboard
@@ -89,13 +91,15 @@ export function Navigation() {
         {isMenuOpen && (
           <div className="md:hidden bg-white border-t border-venture-cream py-4">
             <div className="flex flex-col space-y-4">
-              <Link 
-                to="/" 
-                className={`transition-colors px-4 py-2 ${location.pathname === '/' ? 'text-venture-coral' : 'text-foreground hover:text-venture-coral'}`}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Home
-              </Link>
+              {!user && (
+                <Link 
+                  to="/" 
+                  className={`transition-colors px-4 py-2 ${location.pathname === '/' ? 'text-venture-coral' : 'text-foreground hover:text-venture-coral'}`}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Home
+                </Link>
+              )}
               {user && (
                 <Link 
                   to="/dashboard" 

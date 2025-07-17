@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ChatDialog } from "@/components/ChatDialog";
 import { ModifyBookingDialog } from "@/components/ModifyBookingDialog";
+import { ReviewDialog } from "@/components/ReviewDialog";
 import { useToast } from "@/hooks/use-toast";
 import { 
   Calendar, MapPin, Clock, Users, Star, Download, 
@@ -141,34 +142,62 @@ export default function BookingsPage() {
 
   const BookingCard = ({ booking }: { booking: Booking }) => {
     const handleBookNow = () => {
+      // Simulate booking process
       toast({
-        title: "Booking confirmed!",
-        description: "Your adventure is ready. Check your email for details.",
+        title: booking.status === 'completed' ? "Booking again!" : "Booking confirmed!",
+        description: `${booking.ventureTitle} has been ${booking.status === 'completed' ? 'booked again' : 'booked'}. Check your email for details.`,
       });
     };
 
     const handleDownloadVoucher = () => {
+      // Create and download voucher
+      const voucherContent = `
+VENTURE BOOKING VOUCHER
+======================
+
+Booking Reference: ${booking.bookingReference}
+Adventure: ${booking.ventureTitle}
+Location: ${booking.location}
+Date: ${new Date(booking.date).toLocaleDateString()}
+Duration: ${booking.duration}
+Participants: ${booking.participants}
+Total Amount: $${booking.totalAmount}
+Payment Status: ${booking.paymentStatus}
+Guide: ${booking.guideName}
+
+Terms & Conditions:
+- Present this voucher at the meeting point
+- Arrive 15 minutes before departure
+- Valid for the date specified only
+- Cancellations must be made 24 hours in advance
+
+Contact: bookings@venture.co.ke | +254 700 123 456
+`;
+
+      const blob = new Blob([voucherContent], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `voucher_${booking.bookingReference}.txt`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+
       toast({
         title: "Voucher downloaded",
         description: "Your booking voucher has been downloaded successfully.",
       });
     };
 
-    const handleLeaveReview = () => {
-      toast({
-        title: "Review submitted",
-        description: "Thank you for your feedback! It helps other adventurers.",
-      });
-    };
-
     return (
-    <Card className="mb-6 hover:shadow-medium transition-all duration-300">
+    <Card className="mb-6 hover:shadow-medium transition-all duration-300 card-hover">
       <CardHeader>
         <div className="flex items-start justify-between">
           <div className="flex items-center gap-4">
             <div className="text-5xl">{booking.ventureImage}</div>
             <div>
-              <CardTitle className="text-xl mb-1">{booking.ventureTitle}</CardTitle>
+              <CardTitle className="text-xl font-display font-semibold mb-1">{booking.ventureTitle}</CardTitle>
               <div className="flex items-center gap-4 text-sm text-muted-foreground mb-2">
                 <div className="flex items-center">
                   <MapPin className="h-4 w-4 mr-1" />
@@ -225,15 +254,25 @@ export default function BookingsPage() {
               />
             )}
             {booking.status === 'completed' && (
-              <Button variant="outline" size="sm" onClick={handleLeaveReview}>
-                <Star className="h-4 w-4 mr-2" />
-                Leave Review
-              </Button>
+              <ReviewDialog
+                ventureTitle={booking.ventureTitle}
+                bookingId={booking.bookingReference}
+                triggerButton={
+                  <Button variant="outline" size="sm" className="hover-scale">
+                    <Star className="h-4 w-4 mr-2" />
+                    Leave Review
+                  </Button>
+                }
+              />
             )}
           </div>
           <div className="flex gap-2">
-            <Button size="sm" onClick={handleBookNow}>
-              Book Now
+            <Button 
+              size="sm" 
+              onClick={handleBookNow}
+              className="bg-venture-coral hover:bg-venture-coral/90 hover-scale"
+            >
+              {booking.status === 'completed' ? 'Book Again' : 'Book Now'}
             </Button>
             {booking.status === 'upcoming' && (
               <ModifyBookingDialog
@@ -281,10 +320,10 @@ export default function BookingsPage() {
       <div className="container mx-auto px-4 py-8 pt-24">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-4xl font-bold text-venture-coral mb-4">
+          <h1 className="text-4xl font-display font-bold text-venture-coral mb-4 animate-fade-in">
             My Bookings
           </h1>
-          <p className="text-xl text-muted-foreground">
+          <p className="text-xl text-muted-foreground font-sans">
             Manage your adventures and track your journey with us.
           </p>
         </div>
