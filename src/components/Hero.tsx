@@ -23,7 +23,7 @@ export function Hero() {
 
       <div className="container mx-auto px-4 text-center text-white relative z-10">
         <div className="animate-fade-in">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight text-white drop-shadow-lg">
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight text-white drop-shadow-lg pt-16">
             Unforgettable{" "}
             <span className="bg-gradient-to-r from-venture-gold to-yellow-300 bg-clip-text text-transparent drop-shadow-sm">
               Dates

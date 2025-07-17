@@ -59,14 +59,26 @@ export default function VenturePacksPage() {
     navigate(`/venture-packs/${packId}`);
   };
 
+  const handleBookNow = (packId: string) => {
+    navigate(`/booking?venture=${packId}`);
+  };
+
+  const handleCardClick = (packId: string, e: React.MouseEvent) => {
+    // Don't navigate if clicking on buttons or interactive elements
+    if ((e.target as HTMLElement).closest('button') || (e.target as HTMLElement).closest('[role="button"]')) {
+      return;
+    }
+    navigate(`/venture-packs/${packId}`);
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
       
-      <div className="container mx-auto px-4 py-8 pt-24">
+        <div className="container mx-auto px-4 py-8 pt-24">
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-venture-coral mb-4">
+          <h1 className="text-4xl font-bold text-venture-coral mb-4 mt-8">
             Venture Packs
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -134,7 +146,11 @@ export default function VenturePacksPage() {
         {/* Venture Packs Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredPacks.map((pack) => (
-            <Card key={pack.id} className="shadow-soft hover:shadow-medium transition-all duration-300 group overflow-hidden">
+            <Card 
+              key={pack.id} 
+              className="shadow-soft hover:shadow-medium transition-all duration-300 group overflow-hidden cursor-pointer"
+              onClick={(e) => handleCardClick(pack.id, e)}
+            >
               <CardHeader className="relative">
                 <div className="absolute top-4 right-4 z-10">
                   <Button
@@ -240,13 +256,20 @@ export default function VenturePacksPage() {
                       <Button 
                         variant="outline" 
                         size="sm"
-                        onClick={() => handleViewDetails(pack.id)}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleViewDetails(pack.id);
+                        }}
                       >
                         Details
                       </Button>
                       <Button 
                         className="bg-venture-coral hover:bg-venture-coral/90"
                         size="sm"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleBookNow(pack.id);
+                        }}
                       >
                         Book Now
                       </Button>

@@ -48,7 +48,7 @@ export default function VentureDetailsPage() {
       });
       return;
     }
-    setShowBookingForm(true);
+    navigate(`/booking?venture=${pack.id}&date=${selectedDate.toISOString()}`);
   };
 
   const handleShare = () => {

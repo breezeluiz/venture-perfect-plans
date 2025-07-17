@@ -3,6 +3,7 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "@/components/ui/button";
 import { Heart, Menu, X, User } from "lucide-react";
+import { ThemeToggle } from "./ThemeToggle";
 
 export function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -46,6 +47,7 @@ export function Navigation() {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center space-x-4">
+            <ThemeToggle />
             {user ? (
               <div className="flex items-center space-x-4">
                 <Link to="/profile">
@@ -160,6 +162,9 @@ export function Navigation() {
                     </Link>
                   </>
                 )}
+                <div className="pt-2">
+                  <ThemeToggle />
+                </div>
               </div>
             </div>
           </div>
