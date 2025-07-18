@@ -1,10 +1,8 @@
-import { useState } from "react";
+import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 import { Navigation } from "@/components/Navigation";
 import { Hero } from "@/components/Hero";
-import { PlanBuilder } from "@/components/PlanBuilder";
-import { VentureCard } from "@/components/VentureCard";
 import { VenturePacks } from "@/components/VenturePacks";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -12,48 +10,20 @@ import { Badge } from "@/components/ui/badge";
 import { ArrowRight, Heart, Star, MapPin, Users, Sparkles } from "lucide-react";
 
 const Index = () => {
-  const [showPlanBuilder, setShowPlanBuilder] = useState(false);
-  const [generatedVenture, setGeneratedVenture] = useState(null);
   const { user } = useAuth();
   const navigate = useNavigate();
 
-  const handlePlanComplete = (planData: any) => {
-    // Simulate generating a venture based on plan data
-    const sampleVenture = {
-      title: "A Swahili Coast Sunset & Spice Experience",
-      description: "An unforgettable evening sailing the Tudor Creek at sunset, followed by a gourmet seafood dinner prepared right on the dhow. The perfect blend of romance, luxury, and coastal charm.",
-      totalCost: "$$$ (~24,000 KSh)",
-      vibes: ["Romantic", "Relaxing", "Foodie"],
-      location: "Mombasa, Kenya",
-      activities: [
-        {
-          time: "6:30 PM",
-          title: "Boarding & Aperitif",
-          description: "Arrive at the Tamarind Jetty. Welcome aboard with a 'Dawa' cocktail as the sun begins to set.",
-          location: "Tamarind Mombasa, Cement Silo Road",
-          cost: "Included",
-          notes: "Arrive 15 minutes early for the magical sunset atmosphere"
-        },
-        {
-          time: "7:00 PM",
-          title: "Sunset Cruise & Dinner",
-          description: "The dhow sets sail with live coastal music. Four-course gourmet meal featuring grilled lobster and fresh seafood.",
-          location: "Tudor Creek",
-          cost: "22,000 KSh for two",
-          notes: "Vegetarian options available upon request"
-        },
-        {
-          time: "9:00 PM",
-          title: "Coffee & Liqueurs",
-          description: "Enjoy Swahili coffee and liqueurs under the stars as we sail back to the jetty.",
-          location: "On the dhow",
-          cost: "Included"
-        }
-      ]
-    };
-    
-    setGeneratedVenture(sampleVenture);
-    setShowPlanBuilder(false);
+  useEffect(() => {
+    // Scroll to top when component mounts
+    window.scrollTo(0, 0);
+  }, []);
+
+  const handleStartPlanning = () => {
+    if (user) {
+      navigate('/plan');
+    } else {
+      navigate('/signin');
+    }
   };
 
   const testimonials = [
@@ -81,7 +51,7 @@ const Index = () => {
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen transition-all duration-500 ease-in-out">
       <Navigation />
       
       {/* Hero Section */}
@@ -89,61 +59,24 @@ const Index = () => {
         <Hero />
       </section>
 
-      {/* Plan Builder Section */}
+      {/* Plan Builder CTA Section */}
       <section id="plan" className="py-16 bg-background">
         <div className="container mx-auto px-4">
-          {!showPlanBuilder && !generatedVenture && (
-            <div className="text-center">
-              <h2 className="text-4xl font-bold text-venture-coral mb-4">
-                Ready to Plan Your Perfect Experience?
-              </h2>
-              <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-                Answer a few quick questions and we'll create a personalized itinerary just for you.
-              </p>
-              <Button 
-                size="lg" 
-                onClick={() => user ? setShowPlanBuilder(true) : navigate('/signin')}
-                className="bg-venture-coral hover:bg-venture-coral/90 px-8 py-6 text-lg shadow-medium"
-              >
-                Start Planning Your Venture <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-            </div>
-          )}
-
-          {showPlanBuilder && (
-            <div className="animate-fade-in">
-              <PlanBuilder onComplete={handlePlanComplete} />
-            </div>
-          )}
-
-          {generatedVenture && (
-            <div className="animate-fade-in">
-              <div className="text-center mb-8">
-                <h2 className="text-4xl font-bold text-venture-coral mb-4">
-                  Your Perfect Venture Awaits! ✨
-                </h2>
-                <p className="text-xl text-muted-foreground">
-                  We've crafted something special just for you
-                </p>
-              </div>
-              <VentureCard {...generatedVenture} />
-              <div className="text-center mt-8">
-                <Button 
-                  variant="outline" 
-                  onClick={() => {
-                    setGeneratedVenture(null);
-                    setShowPlanBuilder(false);
-                  }}
-                  className="border-venture-coral text-venture-coral hover:bg-venture-cream mr-4 hover-scale"
-                >
-                  Plan Another Venture
-                </Button>
-                <Button className="bg-venture-ocean hover:bg-venture-ocean/90 hover-scale">
-                  Save This Venture
-                </Button>
-              </div>
-            </div>
-          )}
+          <div className="text-center animate-fade-in">
+            <h2 className="text-4xl font-bold text-venture-coral mb-4 font-crimson">
+              Ready to Plan Your Perfect Experience?
+            </h2>
+            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+              Answer a few quick questions and we'll create a personalized itinerary just for you.
+            </p>
+            <Button 
+              size="lg" 
+              onClick={handleStartPlanning}
+              className="bg-venture-coral hover:bg-venture-coral/90 px-8 py-6 text-lg shadow-medium hover-scale transition-all duration-300"
+            >
+              Start Planning Your Venture <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+          </div>
         </div>
       </section>
 
@@ -157,14 +90,14 @@ const Index = () => {
       {/* How It Works Section */}
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-venture-coral mb-4">
-              How Venture Works
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              From planning to execution, we handle everything so you can focus on making memories.
-            </p>
-          </div>
+            <div className="text-center mb-12 animate-fade-in">
+              <h2 className="text-4xl font-bold text-venture-coral mb-4 font-crimson">
+                How Venture Works
+              </h2>
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                From planning to execution, we handle everything so you can focus on making memories.
+              </p>
+            </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             <div className="text-center">
@@ -203,14 +136,14 @@ const Index = () => {
       {/* Testimonials Section */}
       <section className="py-16 bg-venture-cream/30">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-venture-coral mb-4">
-              Love Stories from Our Adventurers
-            </h2>
-            <p className="text-xl text-muted-foreground">
-              Real experiences from real couples who trusted Venture with their special moments.
-            </p>
-          </div>
+            <div className="text-center mb-12 animate-fade-in">
+              <h2 className="text-4xl font-bold text-venture-coral mb-4 font-crimson">
+                Love Stories from Our Adventurers
+              </h2>
+              <p className="text-xl text-muted-foreground">
+                Real experiences from real couples who trusted Venture with their special moments.
+              </p>
+            </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
@@ -257,8 +190,8 @@ const Index = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
                 size="lg" 
-                className="bg-background text-venture-coral hover:bg-venture-cream px-8 py-6 text-lg font-semibold"
-                onClick={() => user ? setShowPlanBuilder(true) : navigate('/signin')}
+                className="bg-background text-venture-coral hover:bg-venture-cream px-8 py-6 text-lg font-semibold hover-scale transition-all duration-300"
+                onClick={handleStartPlanning}
               >
                 Plan Your First Venture <Sparkles className="ml-2 h-5 w-5" />
               </Button>
@@ -283,7 +216,7 @@ const Index = () => {
             <div>
               <div className="flex items-center space-x-2 mb-4">
                 <Heart className="h-6 w-6" />
-                <span className="text-2xl font-bold">Venture</span>
+                <span className="text-2xl font-bold font-script">Amour</span>
               </div>
               <p className="opacity-90">
                 Creating unforgettable experiences, one perfectly planned adventure at a time.
@@ -322,7 +255,7 @@ const Index = () => {
           </div>
           
           <div className="border-t border-white/20 mt-8 pt-8 text-center opacity-90">
-            <p>&copy; 2024 Venture. All rights reserved. Made with ❤️ for adventurous hearts.</p>
+            <p>&copy; 2024 Amour. All rights reserved. Made with ❤️ for adventurous hearts.</p>
           </div>
         </div>
       </footer>

@@ -15,6 +15,7 @@ import VentureDetailsPage from "./pages/VentureDetailsPage";
 import BookingsPage from "./pages/BookingsPage";
 import ProfilePage from "./pages/ProfilePage";
 import BookingPage from "./pages/BookingPage";
+import PlanBuilderPage from "./pages/PlanBuilderPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -32,20 +33,23 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <AuthProvider>
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/home" element={<Index />} />
-              <Route path="/auth" element={<AuthPage />} />
-              <Route path="/signin" element={<SignInPage />} />
-              <Route path="/signup" element={<SignUpPage />} />
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/venture-packs" element={<VenturePacksPage />} />
-              <Route path="/venture-packs/:id" element={<VentureDetailsPage />} />
-              <Route path="/booking" element={<BookingPage />} />
-              <Route path="/bookings" element={<BookingsPage />} />
-              <Route path="/profile" element={<ProfilePage />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
+            <div className="transition-all duration-500 ease-in-out">
+              <Routes>
+                <Route path="/" element={<Index />} />
+                <Route path="/home" element={<Index />} />
+                <Route path="/auth" element={<AuthPage />} />
+                <Route path="/signin" element={<SignInPage />} />
+                <Route path="/signup" element={<SignUpPage />} />
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/venture-packs" element={<VenturePacksPage />} />
+                <Route path="/venture-packs/:id" element={<VentureDetailsPage />} />
+                <Route path="/booking" element={<BookingPage />} />
+                <Route path="/plan" element={<PlanBuilderPage />} />
+                <Route path="/bookings" element={<BookingsPage />} />
+                <Route path="/profile" element={<ProfilePage />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </div>
           </AuthProvider>
         </BrowserRouter>
       </TooltipProvider>

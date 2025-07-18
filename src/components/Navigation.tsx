@@ -16,9 +16,9 @@ export function Navigation() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="text-3xl">🌍</div>
-            <span className="text-2xl font-logo font-bold text-venture-coral tracking-wider">VENTURE</span>
+          <Link to="/" className="flex items-center space-x-2 transition-all duration-300 hover:scale-105">
+            <Heart className="h-8 w-8 text-venture-coral animate-pulse" />
+            <span className="text-2xl font-script font-bold text-venture-coral tracking-wider">Amour</span>
           </Link>
 
           {/* Desktop Navigation */}

@@ -23,6 +23,8 @@ export default {
 				'serif': ['Playfair Display', 'serif'],
 				'display': ['Playfair Display', 'serif'],
 				'logo': ['Orbitron', 'monospace'],
+				'crimson': ['Crimson Text', 'serif'],
+				'script': ['Dancing Script', 'cursive'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
