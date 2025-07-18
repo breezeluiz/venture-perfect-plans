@@ -23,7 +23,7 @@ export function Hero() {
 
       <div className="container mx-auto px-4 text-center text-white relative z-10">
         <div className="animate-fade-in">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight text-white drop-shadow-lg pt-16">
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight text-white drop-shadow-lg pt-16 mt-8">
             Unforgettable{" "}
             <span className="bg-gradient-to-r from-venture-gold to-yellow-300 bg-clip-text text-transparent drop-shadow-sm">
               Dates
@@ -41,7 +41,7 @@ export function Hero() {
             <Link to="/signup">
               <Button 
                 size="lg" 
-                className="bg-white text-venture-coral hover:bg-venture-cream transition-all duration-300 px-8 py-6 text-lg font-semibold shadow-medium hover:shadow-strong hover-scale"
+                className="bg-background text-venture-coral hover:bg-venture-cream transition-all duration-300 px-8 py-6 text-lg font-semibold shadow-medium hover:shadow-strong hover-scale"
               >
                 Start Planning <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
@@ -51,7 +51,7 @@ export function Hero() {
               <Button 
                 variant="outline" 
                 size="lg"
-                className="border-2 border-white/90 text-white bg-white/10 backdrop-blur-sm hover:bg-white hover:text-venture-coral transition-all duration-300 px-8 py-6 text-lg hover-scale font-semibold"
+                className="border-2 border-white/90 text-white bg-white/10 backdrop-blur-sm hover:bg-background hover:text-venture-coral transition-all duration-300 px-8 py-6 text-lg hover-scale font-semibold"
               >
                 Browse Ventures
               </Button>

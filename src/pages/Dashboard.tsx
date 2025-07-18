@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { PlusCircle, Calendar, MapPin, Clock, Star, Heart, Users } from "lucide-react";
+import { RecommendationsWidget } from "@/components/RecommendationsWidget";
 
 export default function Dashboard() {
   const { user, loading } = useAuth();
@@ -159,6 +160,11 @@ export default function Dashboard() {
               <div className="text-2xl font-bold text-purple-600">${stats.totalSpent}</div>
             </CardContent>
           </Card>
+        </div>
+
+        {/* AI Recommendations */}
+        <div className="mb-8">
+          <RecommendationsWidget />
         </div>
 
         {/* Recent Ventures */}

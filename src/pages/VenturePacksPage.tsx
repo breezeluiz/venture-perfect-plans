@@ -88,7 +88,7 @@ export default function VenturePacksPage() {
         </div>
 
         {/* Filters */}
-        <div className="bg-white rounded-lg shadow-soft p-6 mb-8">
+        <div className="bg-card rounded-lg shadow-soft p-6 mb-8">
           <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
@@ -156,7 +156,7 @@ export default function VenturePacksPage() {
                   <Button
                     variant="ghost"
                     size="sm"
-                    className="h-8 w-8 p-0 bg-white/80 hover:bg-white"
+                    className="h-8 w-8 p-0 bg-background/80 hover:bg-background"
                     onClick={(e) => {
                       e.stopPropagation();
                       toggleFavorite(pack.id);
@@ -308,7 +308,7 @@ export default function VenturePacksPage() {
           </p>
           <Button 
             size="lg" 
-            className="bg-white text-venture-coral hover:bg-venture-cream"
+            className="bg-background text-venture-coral hover:bg-venture-cream"
             onClick={() => navigate('/?plan=true')}
           >
             Create Custom Venture

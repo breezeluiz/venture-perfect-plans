@@ -147,7 +147,7 @@ export function ChatDialog({ guideName, guideImage, bookingId, triggerButton }: 
                     className={`max-w-[80%] rounded-lg px-3 py-2 ${
                       message.sender === 'user'
                         ? 'bg-venture-coral text-white'
-                        : 'bg-white border'
+                        : 'bg-card border'
                     }`}
                   >
                     <p className="text-sm">{message.text}</p>

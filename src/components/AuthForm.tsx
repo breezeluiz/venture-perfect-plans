@@ -73,7 +73,7 @@ export function AuthForm({ initialMode = 'signin' }: AuthFormProps) {
 
   if (resetMode) {
     return (
-      <Card className="w-full max-w-md mx-auto shadow-elegant backdrop-blur-sm bg-white/95">
+      <Card className="w-full max-w-md mx-auto shadow-elegant backdrop-blur-sm bg-card/95">
         <CardHeader className="text-center">
           <div className="flex items-center justify-center space-x-2 mb-4">
             <div className="w-12 h-12 bg-gradient-sunset rounded-full flex items-center justify-center">
@@ -121,7 +121,7 @@ export function AuthForm({ initialMode = 'signin' }: AuthFormProps) {
   }
 
   return (
-    <Card className="w-full max-w-md mx-auto shadow-elegant backdrop-blur-sm bg-white/95">
+    <Card className="w-full max-w-md mx-auto shadow-elegant backdrop-blur-sm bg-card/95">
       <CardHeader className="text-center">
         <div className="flex items-center justify-center space-x-2 mb-4">
           <div className="w-12 h-12 bg-gradient-sunset rounded-full flex items-center justify-center">

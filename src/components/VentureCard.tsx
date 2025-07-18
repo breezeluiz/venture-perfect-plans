@@ -93,7 +93,7 @@ export function VentureCard({ title, description, totalCost, vibes, activities, 
             
             <div className="space-y-4">
               {activities.map((activity, index) => (
-                <div key={index} className="flex gap-4 p-4 bg-white/50 rounded-lg border border-venture-cream">
+                <div key={index} className="flex gap-4 p-4 bg-card/50 rounded-lg border border-venture-cream">
                   <div className="flex-shrink-0">
                     <div className="w-16 h-16 bg-venture-coral text-white rounded-full flex items-center justify-center font-semibold text-sm">
                       {activity.time}
