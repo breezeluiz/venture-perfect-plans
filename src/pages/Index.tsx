@@ -243,7 +243,7 @@ const Index = () => {
             <div>
               <div className="flex items-center space-x-2 mb-4">
                 <Heart className="h-6 w-6 text-primary-foreground" />
-                <span className="text-2xl font-bold font-script text-primary-foreground">Nexus</span>
+                <span className="text-2xl font-bold font-script text-primary-foreground">Venture</span>
               </div>
               <p className="text-primary-foreground/90">
                 Creating unforgettable experiences, one perfectly planned adventure at a time.
@@ -282,7 +282,7 @@ const Index = () => {
           </div>
           
           <div className="border-t border-primary-foreground/20 mt-8 pt-8 text-center text-primary-foreground/80">
-            <p>&copy; 2024 Nexus. All rights reserved. Made with ❤️ for adventurous hearts.</p>
+            <p>&copy; 2024 Venture. All rights reserved. Made with ❤️ for adventurous hearts.</p>
           </div>
         </div>
       </footer>

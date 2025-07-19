@@ -34,10 +34,10 @@ export function Navigation() {
             className="flex items-center space-x-3 group transition-all duration-500 hover:scale-105"
           >
             <div className="relative">
-              <Network className="h-8 w-8 text-primary transition-all duration-500 group-hover:animate-glow-pulse" />
+              <Heart className="h-8 w-8 text-primary transition-all duration-500 group-hover:animate-glow-pulse" />
             </div>
             <span className="text-2xl font-display font-semibold text-foreground tracking-tight">
-              Nexus
+              Venture
             </span>
           </Link>
 
