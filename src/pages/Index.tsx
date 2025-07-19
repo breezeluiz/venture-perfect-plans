@@ -237,52 +237,52 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-venture-coral text-white py-12">
+      <footer className="bg-primary text-primary-foreground py-12">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
               <div className="flex items-center space-x-2 mb-4">
-                <Heart className="h-6 w-6" />
-                <span className="text-2xl font-bold font-script">Amour</span>
+                <Heart className="h-6 w-6 text-primary-foreground" />
+                <span className="text-2xl font-bold font-script text-primary-foreground">Nexus</span>
               </div>
-              <p className="opacity-90">
+              <p className="text-primary-foreground/90">
                 Creating unforgettable experiences, one perfectly planned adventure at a time.
               </p>
             </div>
             
             <div>
-              <h3 className="font-semibold mb-4">Plan</h3>
-              <ul className="space-y-2 opacity-90">
-                <li><a href="#" className="hover:opacity-100 transition-opacity">Date Ideas</a></li>
-                <li><a href="#" className="hover:opacity-100 transition-opacity">Weekend Getaways</a></li>
-                <li><a href="#" className="hover:opacity-100 transition-opacity">Special Occasions</a></li>
-                <li><a href="#" className="hover:opacity-100 transition-opacity">Group Adventures</a></li>
+              <h3 className="font-semibold mb-4 text-primary-foreground">Plan</h3>
+              <ul className="space-y-2 text-primary-foreground/80">
+                <li><a href="#" className="hover:text-primary-foreground transition-colors">Date Ideas</a></li>
+                <li><a href="#" className="hover:text-primary-foreground transition-colors">Weekend Getaways</a></li>
+                <li><a href="#" className="hover:text-primary-foreground transition-colors">Special Occasions</a></li>
+                <li><a href="#" className="hover:text-primary-foreground transition-colors">Group Adventures</a></li>
               </ul>
             </div>
             
             <div>
-              <h3 className="font-semibold mb-4">Explore</h3>
-              <ul className="space-y-2 opacity-90">
-                <li><a href="#" className="hover:opacity-100 transition-opacity">Nairobi</a></li>
-                <li><a href="#" className="hover:opacity-100 transition-opacity">Mombasa</a></li>
-                <li><a href="#" className="hover:opacity-100 transition-opacity">Diani Beach</a></li>
-                <li><a href="#" className="hover:opacity-100 transition-opacity">All Locations</a></li>
+              <h3 className="font-semibold mb-4 text-primary-foreground">Explore</h3>
+              <ul className="space-y-2 text-primary-foreground/80">
+                <li><a href="#" className="hover:text-primary-foreground transition-colors">Nairobi</a></li>
+                <li><a href="#" className="hover:text-primary-foreground transition-colors">Mombasa</a></li>
+                <li><a href="#" className="hover:text-primary-foreground transition-colors">Diani Beach</a></li>
+                <li><a href="#" className="hover:text-primary-foreground transition-colors">All Locations</a></li>
               </ul>
             </div>
             
             <div>
-              <h3 className="font-semibold mb-4">Company</h3>
-              <ul className="space-y-2 opacity-90">
-                <li><a href="#" className="hover:opacity-100 transition-opacity">About Us</a></li>
-                <li><a href="#" className="hover:opacity-100 transition-opacity">How It Works</a></li>
-                <li><a href="#" className="hover:opacity-100 transition-opacity">Partner With Us</a></li>
-                <li><a href="#" className="hover:opacity-100 transition-opacity">Contact</a></li>
+              <h3 className="font-semibold mb-4 text-primary-foreground">Company</h3>
+              <ul className="space-y-2 text-primary-foreground/80">
+                <li><a href="#" className="hover:text-primary-foreground transition-colors">About Us</a></li>
+                <li><a href="#" className="hover:text-primary-foreground transition-colors">How It Works</a></li>
+                <li><a href="#" className="hover:text-primary-foreground transition-colors">Partner With Us</a></li>
+                <li><a href="#" className="hover:text-primary-foreground transition-colors">Contact</a></li>
               </ul>
             </div>
           </div>
           
-          <div className="border-t border-white/20 mt-8 pt-8 text-center opacity-90">
-            <p>&copy; 2024 Amour. All rights reserved. Made with ❤️ for adventurous hearts.</p>
+          <div className="border-t border-primary-foreground/20 mt-8 pt-8 text-center text-primary-foreground/80">
+            <p>&copy; 2024 Nexus. All rights reserved. Made with ❤️ for adventurous hearts.</p>
           </div>
         </div>
       </footer>
