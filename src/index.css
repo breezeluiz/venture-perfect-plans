@@ -9,58 +9,64 @@ All colors MUST be HSL.
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 215 25% 27%;
+    --foreground: 220 26% 14%;
 
     --card: 0 0% 100%;
-    --card-foreground: 215 25% 27%;
+    --card-foreground: 220 26% 14%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 215 25% 27%;
+    --popover-foreground: 220 26% 14%;
 
-    --primary: 11 93% 68%;
+    --primary: 262 83% 58%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 24 100% 95%;
-    --secondary-foreground: 215 25% 27%;
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 220 26% 14%;
 
-    --muted: 24 100% 95%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
 
-    --accent: 45 93% 75%;
-    --accent-foreground: 215 25% 27%;
+    --accent: 142 76% 36%;
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 24 70% 92%;
-    --input: 24 70% 92%;
-    --ring: 11 93% 68%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 262 83% 58%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
     
-    /* Design System Colors - Venture Theme */
-    --venture-coral: 11 93% 68%;
-    --venture-coral-light: 11 90% 78%;
-    --venture-ocean: 213 100% 35%;
-    --venture-ocean-light: 213 100% 60%;
-    --venture-gold: 45 93% 75%;
-    --venture-cream: 24 100% 95%;
-    --venture-sand: 38 44% 88%;
+    /* Modern Design System - Sophisticated Purple & Emerald */
+    --amour-primary: 262 83% 58%;        /* Rich Purple */
+    --amour-primary-light: 262 83% 68%;
+    --amour-primary-dark: 262 83% 48%;
+    --amour-secondary: 142 76% 36%;      /* Emerald Green */
+    --amour-secondary-light: 142 76% 46%;
+    --amour-accent: 45 93% 47%;          /* Warm Gold */
+    --amour-neutral: 220 14% 96%;        /* Soft Gray */
+    --amour-neutral-dark: 220 26% 14%;   /* Dark Gray */
+    --amour-surface: 0 0% 100%;          /* Pure White */
+    --amour-surface-elevated: 220 14% 98%;
     
     /* Gradients */
-    --gradient-sunset: linear-gradient(135deg, hsl(11 93% 68%), hsl(45 93% 75%));
-    --gradient-ocean: linear-gradient(135deg, hsl(213 100% 35%), hsl(213 100% 60%));
-    --gradient-hero: linear-gradient(135deg, hsl(11 93% 68%) 0%, hsl(213 100% 35%) 100%);
-    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(24 100% 98%) 100%);
+    --gradient-primary: linear-gradient(135deg, hsl(262 83% 58%), hsl(262 83% 68%));
+    --gradient-secondary: linear-gradient(135deg, hsl(142 76% 36%), hsl(142 76% 46%));
+    --gradient-hero: linear-gradient(135deg, hsl(262 83% 58%) 0%, hsl(142 76% 36%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(220 14% 98%) 100%);
+    --gradient-surface: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(220 14% 99%) 100%);
     
     /* Shadows */
-    --shadow-soft: 0 4px 20px -2px hsl(11 93% 68% / 0.1);
-    --shadow-medium: 0 8px 30px -4px hsl(11 93% 68% / 0.15);
-    --shadow-strong: 0 20px 60px -12px hsl(11 93% 68% / 0.25);
+    --shadow-soft: 0 1px 3px hsl(220 26% 14% / 0.08), 0 1px 2px hsl(220 26% 14% / 0.06);
+    --shadow-medium: 0 4px 12px hsl(220 26% 14% / 0.12), 0 2px 4px hsl(220 26% 14% / 0.08);
+    --shadow-strong: 0 8px 32px hsl(220 26% 14% / 0.16), 0 4px 8px hsl(220 26% 14% / 0.12);
+    --shadow-glow: 0 0 32px hsl(262 83% 58% / 0.24);
     
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --transition-spring: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
     --radius: 0.5rem;
 
@@ -82,33 +88,58 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 220 26% 6%;
+    --foreground: 220 14% 96%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 220 26% 8%;
+    --card-foreground: 220 14% 96%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 220 26% 8%;
+    --popover-foreground: 220 14% 96%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 262 83% 68%;
+    --primary-foreground: 220 26% 6%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 220 26% 12%;
+    --secondary-foreground: 220 14% 96%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 220 26% 12%;
+    --muted-foreground: 220 9% 46%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 142 76% 46%;
+    --accent-foreground: 220 26% 6%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 220 14% 96%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --border: 220 26% 12%;
+    --input: 220 26% 12%;
+    --ring: 262 83% 68%;
+    
+    /* Dark Mode Overrides */
+    --amour-primary: 262 83% 68%;
+    --amour-primary-light: 262 83% 78%;
+    --amour-primary-dark: 262 83% 58%;
+    --amour-secondary: 142 76% 46%;
+    --amour-secondary-light: 142 76% 56%;
+    --amour-accent: 45 93% 57%;
+    --amour-neutral: 220 26% 12%;
+    --amour-neutral-dark: 220 14% 96%;
+    --amour-surface: 220 26% 8%;
+    --amour-surface-elevated: 220 26% 10%;
+    
+    /* Dark Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(262 83% 68%), hsl(262 83% 78%));
+    --gradient-secondary: linear-gradient(135deg, hsl(142 76% 46%), hsl(142 76% 56%));
+    --gradient-hero: linear-gradient(135deg, hsl(262 83% 68%) 0%, hsl(142 76% 46%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(220 26% 8%) 0%, hsl(220 26% 10%) 100%);
+    --gradient-surface: linear-gradient(180deg, hsl(220 26% 8%) 0%, hsl(220 26% 9%) 100%);
+    
+    /* Dark Shadows */
+    --shadow-soft: 0 1px 3px hsl(220 26% 4% / 0.24), 0 1px 2px hsl(220 26% 4% / 0.18);
+    --shadow-medium: 0 4px 12px hsl(220 26% 4% / 0.32), 0 2px 4px hsl(220 26% 4% / 0.24);
+    --shadow-strong: 0 8px 32px hsl(220 26% 4% / 0.48), 0 4px 8px hsl(220 26% 4% / 0.36);
+    --shadow-glow: 0 0 32px hsl(262 83% 68% / 0.32);
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -154,24 +185,30 @@ All colors MUST be HSL.
     }
   }
 
-  @keyframes bounce-gentle {
-    0%, 20%, 50%, 80%, 100% {
-      transform: translateY(0);
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
     }
-    40% {
-      transform: translateY(-5px);
-    }
-    60% {
-      transform: translateY(-3px);
+    50% {
+      transform: translateY(-6px);
     }
   }
 
-  @keyframes glow {
+  @keyframes shimmer {
     0% {
-      box-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
+      background-position: -200% center;
     }
     100% {
-      box-shadow: 0 0 30px rgba(255, 107, 107, 0.8), 0 0 40px rgba(255, 107, 107, 0.6);
+      background-position: 200% center;
+    }
+  }
+
+  @keyframes glow-pulse {
+    0%, 100% {
+      box-shadow: 0 0 20px hsl(var(--amour-primary) / 0.4);
+    }
+    50% {
+      box-shadow: 0 0 40px hsl(var(--amour-primary) / 0.6);
     }
   }
 
@@ -186,40 +223,104 @@ All colors MUST be HSL.
     }
   }
 
+  @keyframes slide-down {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes navbar-blur {
+    from {
+      backdrop-filter: blur(0px);
+      background: hsl(var(--background) / 0);
+    }
+    to {
+      backdrop-filter: blur(12px);
+      background: hsl(var(--background) / 0.8);
+    }
+  }
+
   /* Animation utilities */
   .animate-fade-in {
-    animation: fade-in 0.3s ease-out;
+    animation: fade-in 0.6s ease-out;
   }
 
   .animate-slide-up {
-    animation: slide-up 0.3s ease-out;
+    animation: slide-up 0.6s ease-out;
   }
 
-  .animate-bounce-gentle {
-    animation: bounce-gentle 3s ease-in-out infinite;
+  .animate-slide-down {
+    animation: slide-down 0.6s ease-out;
   }
 
-  .animate-glow {
-    animation: glow 2s ease-in-out infinite alternate;
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-shimmer {
+    animation: shimmer 2s linear infinite;
+  }
+
+  .animate-glow-pulse {
+    animation: glow-pulse 2s ease-in-out infinite;
   }
 
   .animate-scale-in {
-    animation: scale-in 0.2s ease-out;
+    animation: scale-in 0.4s ease-out;
+  }
+
+  .animate-navbar-blur {
+    animation: navbar-blur 0.3s ease-out forwards;
+  }
+
+  /* Modern Interactive Elements */
+  .nav-item {
+    @apply relative px-4 py-2 transition-all duration-300 ease-out;
+  }
+
+  .nav-item::before {
+    @apply content-[''] absolute inset-0 bg-gradient-primary rounded-lg opacity-0 transition-all duration-300 ease-out scale-95;
+  }
+
+  .nav-item:hover::before {
+    @apply opacity-10 scale-100;
+  }
+
+  .nav-item.active::before {
+    @apply opacity-15 scale-100;
   }
 
   /* Hover Scale Animation */
   .hover-scale {
-    @apply transition-transform duration-200 hover:scale-105;
+    @apply transition-all duration-300 hover:scale-105;
+  }
+
+  .hover-lift {
+    @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-strong;
   }
 
   /* Button Animations */
-  .btn-glow {
-    @apply hover:animate-glow;
+  .btn-modern {
+    @apply relative overflow-hidden transition-all duration-300;
+    background: linear-gradient(135deg, hsl(var(--amour-primary)), hsl(var(--amour-primary-light)));
   }
 
-  /* Card Hover Effects */
-  .card-hover {
-    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+  .btn-modern::before {
+    @apply content-[''] absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -translate-x-full transition-transform duration-700;
+  }
+
+  .btn-modern:hover::before {
+    @apply translate-x-full;
+  }
+
+  /* Card Effects */
+  .card-modern {
+    @apply transition-all duration-300 hover:shadow-medium hover:-translate-y-1 bg-gradient-card border border-border/50;
   }
 
   /* Smooth Transitions */
@@ -227,8 +328,25 @@ All colors MUST be HSL.
     @apply transition-all duration-300 ease-in-out;
   }
 
-  /* Story Link Animation */
-  .story-link {
-    @apply relative inline-block after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-primary after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left;
+  .transition-spring {
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  /* Modern Link Animation */
+  .link-modern {
+    @apply relative inline-block transition-all duration-300;
+  }
+
+  .link-modern::after {
+    @apply content-[''] absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-primary transition-all duration-300 ease-out;
+  }
+
+  .link-modern:hover::after {
+    @apply w-full;
+  }
+
+  /* Glass Effect */
+  .glass-effect {
+    @apply backdrop-blur-xl bg-background/80 border border-border/50;
   }
 }
