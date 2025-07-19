@@ -19,12 +19,10 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				'sans': ['Poppins', 'Inter', 'system-ui', 'sans-serif'],
-				'serif': ['Playfair Display', 'serif'],
-				'display': ['Playfair Display', 'serif'],
-				'logo': ['Orbitron', 'monospace'],
-				'crimson': ['Crimson Text', 'serif'],
-				'script': ['Dancing Script', 'cursive'],
+				'sans': ['Geist', 'Inter', 'system-ui', 'sans-serif'],
+				'mono': ['JetBrains Mono', 'monospace'],
+				'display': ['Geist', 'Inter', 'sans-serif'],
+				'body': ['Inter', 'system-ui', 'sans-serif']
 			},
 			colors: {
 				border: 'hsl(var(--border))',
@@ -60,17 +58,20 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				amour: {
-					primary: 'hsl(var(--amour-primary))',
-					'primary-light': 'hsl(var(--amour-primary-light))',
-					'primary-dark': 'hsl(var(--amour-primary-dark))',
-					secondary: 'hsl(var(--amour-secondary))',
-					'secondary-light': 'hsl(var(--amour-secondary-light))',
-					accent: 'hsl(var(--amour-accent))',
-					neutral: 'hsl(var(--amour-neutral))',
-					'neutral-dark': 'hsl(var(--amour-neutral-dark))',
-					surface: 'hsl(var(--amour-surface))',
-					'surface-elevated': 'hsl(var(--amour-surface-elevated))'
+				nexus: {
+					primary: 'hsl(var(--nexus-primary))',
+					'primary-light': 'hsl(var(--nexus-primary-light))',
+					'primary-dark': 'hsl(var(--nexus-primary-dark))',
+					secondary: 'hsl(var(--nexus-secondary))',
+					'secondary-light': 'hsl(var(--nexus-secondary-light))',
+					accent: 'hsl(var(--nexus-accent))',
+					neutral: 'hsl(var(--nexus-neutral))',
+					'neutral-dark': 'hsl(var(--nexus-neutral-dark))',
+					surface: 'hsl(var(--nexus-surface))',
+					'surface-elevated': 'hsl(var(--nexus-surface-elevated))',
+					'text-primary': 'hsl(var(--nexus-text-primary))',
+					'text-secondary': 'hsl(var(--nexus-text-secondary))',
+					'text-inverse': 'hsl(var(--nexus-text-inverse))'
 				},
 				venture: {
 					coral: 'hsl(var(--venture-coral))',

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "@/components/ui/button";
-import { Heart, Menu, X, User, Sparkles } from "lucide-react";
+import { Heart, Menu, X, User, Network } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
 
 export function Navigation() {
@@ -34,11 +34,10 @@ export function Navigation() {
             className="flex items-center space-x-3 group transition-all duration-500 hover:scale-105"
           >
             <div className="relative">
-              <Heart className="h-10 w-10 text-primary transition-all duration-500 group-hover:animate-glow-pulse" />
-              <Sparkles className="absolute -top-1 -right-1 h-4 w-4 text-accent animate-float" />
+              <Network className="h-8 w-8 text-primary transition-all duration-500 group-hover:animate-glow-pulse" />
             </div>
-            <span className="text-3xl font-script font-bold bg-gradient-primary bg-clip-text text-transparent tracking-wider">
-              Amour
+            <span className="text-2xl font-display font-semibold text-foreground tracking-tight">
+              Nexus
             </span>
           </Link>
 
@@ -47,10 +46,10 @@ export function Navigation() {
             {!user && (
               <Link 
                 to="/" 
-                className={`nav-item link-modern font-medium ${
+                className={`nav-item link-modern font-medium transition-colors duration-300 ${
                   location.pathname === '/' 
                     ? 'text-primary active' 
-                    : 'text-foreground/80 hover:text-primary'
+                    : 'text-muted-foreground hover:text-foreground'
                 }`}
               >
                 Home
@@ -59,10 +58,10 @@ export function Navigation() {
             {user && (
               <Link 
                 to="/dashboard" 
-                className={`nav-item link-modern font-medium ${
+                className={`nav-item link-modern font-medium transition-colors duration-300 ${
                   location.pathname === '/dashboard' 
                     ? 'text-primary active' 
-                    : 'text-foreground/80 hover:text-primary'
+                    : 'text-muted-foreground hover:text-foreground'
                 }`}
               >
                 Dashboard
@@ -70,10 +69,10 @@ export function Navigation() {
             )}
             <Link 
               to="/venture-packs" 
-              className={`nav-item link-modern font-medium ${
+              className={`nav-item link-modern font-medium transition-colors duration-300 ${
                 location.pathname === '/venture-packs' 
                   ? 'text-primary active' 
-                  : 'text-foreground/80 hover:text-primary'
+                  : 'text-muted-foreground hover:text-foreground'
               }`}
             >
               Venture Packs
@@ -81,10 +80,10 @@ export function Navigation() {
             {user && (
               <Link 
                 to="/bookings" 
-                className={`nav-item link-modern font-medium ${
+                className={`nav-item link-modern font-medium transition-colors duration-300 ${
                   location.pathname === '/bookings' 
                     ? 'text-primary active' 
-                    : 'text-foreground/80 hover:text-primary'
+                    : 'text-muted-foreground hover:text-foreground'
                 }`}
               >
                 My Bookings
@@ -101,7 +100,7 @@ export function Navigation() {
                 <Link to="/profile">
                   <Button 
                     variant="ghost" 
-                    className="text-foreground/80 hover:text-primary hover:bg-primary/10 transition-all duration-300"
+                    className="text-muted-foreground hover:text-foreground hover:bg-muted transition-all duration-300"
                   >
                     <User className="h-4 w-4 mr-2" />
                     Profile
@@ -110,7 +109,7 @@ export function Navigation() {
                 <Button 
                   variant="ghost" 
                   onClick={() => signOut()}
-                  className="text-foreground/80 hover:text-destructive hover:bg-destructive/10 transition-all duration-300"
+                  className="text-muted-foreground hover:text-destructive hover:bg-destructive/10 transition-all duration-300"
                 >
                   Sign Out
                 </Button>
@@ -120,13 +119,13 @@ export function Navigation() {
                 <Link to="/signin">
                   <Button 
                     variant="ghost" 
-                    className="text-foreground/80 hover:text-primary hover:bg-primary/10 transition-all duration-300 font-medium"
+                    className="text-muted-foreground hover:text-foreground hover:bg-muted transition-all duration-300 font-medium"
                   >
                     Sign In
                   </Button>
                 </Link>
                 <Link to="/signup">
-                  <Button className="btn-modern text-white font-medium px-6 py-2 hover-scale shadow-soft">
+                  <Button className="btn-modern text-white font-medium px-6 py-2 hover-scale shadow-soft bg-primary hover:bg-primary/90">
                     Create Account
                   </Button>
                 </Link>
