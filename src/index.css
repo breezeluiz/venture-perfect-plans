@@ -284,7 +284,8 @@ All colors MUST be HSL.
   }
 
   .nav-item::before {
-    @apply content-[''] absolute inset-0 bg-gradient-primary rounded-lg opacity-0 transition-all duration-300 ease-out scale-95;
+    @apply content-[''] absolute inset-0 rounded-lg opacity-0 transition-all duration-300 ease-out scale-95;
+    background: var(--gradient-primary);
   }
 
   .nav-item:hover::before {
@@ -307,11 +308,12 @@ All colors MUST be HSL.
   /* Button Animations */
   .btn-modern {
     @apply relative overflow-hidden transition-all duration-300;
-    background: linear-gradient(135deg, hsl(var(--amour-primary)), hsl(var(--amour-primary-light)));
+    background: var(--gradient-primary);
   }
 
   .btn-modern::before {
-    @apply content-[''] absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -translate-x-full transition-transform duration-700;
+    @apply content-[''] absolute inset-0 transform -translate-x-full transition-transform duration-700;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
   }
 
   .btn-modern:hover::before {
@@ -320,7 +322,8 @@ All colors MUST be HSL.
 
   /* Card Effects */
   .card-modern {
-    @apply transition-all duration-300 hover:shadow-medium hover:-translate-y-1 bg-gradient-card border border-border/50;
+    @apply transition-all duration-300 hover:shadow-medium hover:-translate-y-1 border border-border/50;
+    background: var(--gradient-card);
   }
 
   /* Smooth Transitions */
@@ -338,7 +341,8 @@ All colors MUST be HSL.
   }
 
   .link-modern::after {
-    @apply content-[''] absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-primary transition-all duration-300 ease-out;
+    @apply content-[''] absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300 ease-out;
+    background: var(--gradient-primary);
   }
 
   .link-modern:hover::after {

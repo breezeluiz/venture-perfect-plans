@@ -60,6 +60,18 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				amour: {
+					primary: 'hsl(var(--amour-primary))',
+					'primary-light': 'hsl(var(--amour-primary-light))',
+					'primary-dark': 'hsl(var(--amour-primary-dark))',
+					secondary: 'hsl(var(--amour-secondary))',
+					'secondary-light': 'hsl(var(--amour-secondary-light))',
+					accent: 'hsl(var(--amour-accent))',
+					neutral: 'hsl(var(--amour-neutral))',
+					'neutral-dark': 'hsl(var(--amour-neutral-dark))',
+					surface: 'hsl(var(--amour-surface))',
+					'surface-elevated': 'hsl(var(--amour-surface-elevated))'
+				},
 				venture: {
 					coral: 'hsl(var(--venture-coral))',
 					'coral-light': 'hsl(var(--venture-coral-light))',
@@ -140,14 +152,18 @@ export default {
 			},
 			backgroundImage: {
 				'gradient-sunset': 'var(--gradient-sunset)',
-				'gradient-ocean': 'var(--gradient-ocean)',
+				'gradient-ocean': 'var(--gradient-ocean)', 
 				'gradient-hero': 'var(--gradient-hero)',
-				'gradient-card': 'var(--gradient-card)'
+				'gradient-card': 'var(--gradient-card)',
+				'gradient-surface': 'var(--gradient-surface)',
+				'gradient-primary': 'var(--gradient-primary)',
+				'gradient-secondary': 'var(--gradient-secondary)'
 			},
 			boxShadow: {
 				'soft': 'var(--shadow-soft)',
 				'medium': 'var(--shadow-medium)',
-				'strong': 'var(--shadow-strong)'
+				'strong': 'var(--shadow-strong)',
+				'glow': 'var(--shadow-glow)'
 			}
 		}
 	},
